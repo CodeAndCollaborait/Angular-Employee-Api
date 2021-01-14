@@ -12,6 +12,8 @@ import { CreateEmployeeComponent } from './components/create-employee/create-emp
 import { UpdateEmployeeComponent } from './components/update-employee/update-employee.component';
 import { EmployeeDetailsComponent } from './components/employee-details/employee-details.component';
 import { FormsModule } from '@angular/forms';
+import { LoginComponent } from './pages/login/login.component';
+import { LogoutComponent } from './pages/logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { FormsModule } from '@angular/forms';
     CreateEmployeeComponent,
     UpdateEmployeeComponent,
     EmployeeDetailsComponent,
+    LoginComponent,
+    LogoutComponent,
   ],
   imports: [
     BrowserModule,

@@ -6,13 +6,29 @@ import { EmployeeListComponent } from './components/employee-list/employee-list.
 import { UpdateEmployeeComponent } from './components/update-employee/update-employee.component';
 import { FooterComponent } from './pages/footer/footer.component';
 import { HeaderComponent } from './pages/header/header.component';
+import { LoginComponent } from './pages/login/login.component';
+import { LogoutComponent } from './pages/logout/logout.component';
+import { AuthGaurdService } from './services/auth-gaurd.service';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'employee', pathMatch: 'full' },
-  { path: 'employee', component: EmployeeListComponent },
-  { path: 'add', component: CreateEmployeeComponent },
+  {
+    path: 'employee',
+    component: EmployeeListComponent,
+    canActivate: [AuthGaurdService],
+  },
+  {
+    path: 'add',
+    component: CreateEmployeeComponent,
+    canActivate: [AuthGaurdService],
+  },
   { path: 'details/:id', component: EmployeeDetailsComponent },
   { path: 'update/:id', component: UpdateEmployeeComponent },
+  { path: 'login', component: LoginComponent },
+  {
+    path: 'logout',
+    component: LogoutComponent,
+    canActivate: [AuthGaurdService],
+  },
 ];
 
 @NgModule({
