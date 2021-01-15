@@ -4,8 +4,6 @@ import { CreateEmployeeComponent } from './components/create-employee/create-emp
 import { EmployeeDetailsComponent } from './components/employee-details/employee-details.component';
 import { EmployeeListComponent } from './components/employee-list/employee-list.component';
 import { UpdateEmployeeComponent } from './components/update-employee/update-employee.component';
-import { FooterComponent } from './pages/footer/footer.component';
-import { HeaderComponent } from './pages/header/header.component';
 import { LoginComponent } from './pages/login/login.component';
 import { LogoutComponent } from './pages/logout/logout.component';
 import { AuthGaurdService } from './services/auth-gaurd.service';
