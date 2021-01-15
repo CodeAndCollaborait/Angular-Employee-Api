@@ -2,7 +2,7 @@
   <div class="panel-heading">
     <h4 class="display-6">
       <strong>Employee List</strong>
-      </h4>
+    </h4>
     <a
       style="text-align: center"
       routerLink="/add"
@@ -25,23 +25,26 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let emp of employees">
-          <td>{{ emp.firstName }}</td>
-          <td>{{ emp.lastName }}</td>
-          <td>{{ emp.email }}</td>
+        <tr>
+          <td>{{ employees[currentPage].firstName }}</td>
+          <td>{{ employees[currentPage].lastName }}</td>
+          <td>{{ employees[currentPage].email }}</td>
           <td>
-            <button (click)="deleteEmployee(emp.id)" class="btn btn-danger">
+            <button
+              (click)="deleteEmployee(employees[currentPage].id)"
+              class="btn btn-danger"
+            >
               Delete
             </button>
             <button
-              (click)="employeeDetails(emp.id)"
+              (click)="employeeDetails(employees[currentPage].id)"
               class="btn btn-info"
               style="margin-left: 10px"
             >
               Details
             </button>
             <button
-              (click)="updateEmployee(emp.id)"
+              (click)="updateEmployee(employees[currentPage].id)"
               class="btn btn-info"
               style="margin-left: 10px"
             >
@@ -52,4 +55,35 @@
       </tbody>
     </table>
   </div>
+
+  <nav aria-label="Page navigation example">
+    <ul class="pagination">
+      <!-- This is previous tab -->
+      <li class="page-item" [ngClass]="{ disabled: currentPage === 0 }">
+        <a class="page-link" (click)="currentPage = currentPage - 1"
+          >Previous</a
+        >
+      </li>
+
+      <ng-container *ngFor="let emp of employees; let i = index">
+        <li
+          class="page-item"
+          [ngClass]="{ active: i === currentPage }"
+          *ngIf="listWindowIndex(i)"
+        >
+          <a class="page-link" (click)="currentPage = i">
+            {{ i + 1 }}
+          </a>
+        </li>
+      </ng-container>
+
+      <!-- This is Next Tab -->
+      <li
+        class="page-item"
+        [ngClass]="{ disabled: currentPage === employees.length - 1 }"
+      >
+        <a class="page-link" (click)="currentPage = currentPage + 1">Next</a>
+      </li>
+    </ul>
+  </nav>
 </div>

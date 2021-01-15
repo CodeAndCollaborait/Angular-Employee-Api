@@ -12,6 +12,11 @@ import { Router } from '@angular/router';
 })
 export class EmployeeListComponent implements OnInit {
   employees: any;
+  currentPage: number = 0;
+
+  listWindowIndex(index: number) { 
+    return Math.abs(this.currentPage - index) < 4;
+  }
 
   constructor(
     private employeeService: EmployeeService,
